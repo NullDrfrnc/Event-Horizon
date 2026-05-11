@@ -7,7 +7,9 @@ class_name GravityBody
 		initial_velocity = value
 		update_gizmos()
 
-var velocity: Vector3 = Vector3.ZERO;
+var velocity: Vector3 = Vector3.ZERO
+
+var prev_position: Vector3 = Vector3.ZERO
 
 @export_tool_button("Calculate Stable Orbit")
 var _calculate_orbit_button = _set_stable_orbit
@@ -18,6 +20,7 @@ var _calculate_orbit_button = _set_stable_orbit
 func _ready() -> void:
 	super._ready()
 	velocity = initial_velocity
+	prev_position = global_position
 	add_to_group(Groups.gravity_bodies)
 	set_notify_transform(true)
 
@@ -25,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# Default is no acceleration
 		var acceleration = Vector3.ZERO;
+		prev_position = global_position;
 		
 		for source in get_tree().get_nodes_in_group(Groups.gravity_sources):
 			if source == self: continue

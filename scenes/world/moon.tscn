@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bfwb18flnrd75"]
+
+[ext_resource type="Script" uid="uid://5uu7yi264eap" path="res://scripts/world/moon.gd" id="1_mtm2p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtm2p"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_80bhf"]
+
+[node name="Moon" type="Node3D" unique_id=636680812]
+script = ExtResource("1_mtm2p")
+metadata/_custom_type_script = "uid://5uu7yi264eap"
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=913698575]
+material_override = SubResource("StandardMaterial3D_mtm2p")
+mesh = SubResource("SphereMesh_80bhf")

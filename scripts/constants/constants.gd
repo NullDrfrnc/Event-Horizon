@@ -6,6 +6,8 @@ const G: float = 100;
 var debug: bool = false;
 
 func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint(): return
+	
 	if event.is_action_pressed("enable_debug"):
 		debug = !debug;
 		print("debug ", debug)
@@ -54,10 +56,6 @@ func draw_dot(position: Vector3, color: Color = Color.WHITE) -> void:
 func calculate_stable_orbit_velocity(body: GravityBody, target: GravitySource) -> Vector3:
 	var to_target = target.global_position - body.global_position
 	var distance = to_target.length()
-	
-	var speed = sqrt(Constants.G * (target.object_mass / 1000.0) / distance)
-	
-	# Loodrecht op de richting naar het doelobject
+	var speed = sqrt(G * (target.object_mass / 1000.0) / distance)
 	var direction = to_target.normalized().cross(Vector3.UP).normalized()
-	
 	return direction * speed
