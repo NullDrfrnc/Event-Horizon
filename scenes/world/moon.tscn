@@ -8,6 +8,7 @@
 
 [node name="Moon" type="Node3D" unique_id=636680812]
 script = ExtResource("1_mtm2p")
+height = null
 metadata/_custom_type_script = "uid://5uu7yi264eap"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=913698575]

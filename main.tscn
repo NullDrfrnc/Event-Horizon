@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bw37s2ml1edke" path="res://assets/textures/planets/earth.jpg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d0vk5vdrrytmm" path="res://scenes/world/star.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bfwb18flnrd75" path="res://scenes/world/moon.tscn" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://bq2qcdapvd040" path="res://assets/textures/planets/moon.jpg" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://b6jdepxa3fcgi" path="res://scenes/debug/freecam.tscn" id="5_lquwl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1bvp3"]
@@ -29,11 +30,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1823.7329, 0, 0)
 height = 50.0
 texture = ExtResource("2_0xm2m")
 initial_velocity = Vector3(-0.285, 1.155, -7.901)
-orbit_target = NodePath("../Star")
+orbit_target = Vector3(1823.7329, 0, 0)
 object_mass = 98000.0
 
 [node name="Moon" parent="Earth" unique_id=636680812 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.41992, 0, 0)
+height = 2.5
+texture = ExtResource("5_272bh")
 initial_velocity = Vector3(0, 0, -11.632793)
 orbit_target = NodePath("..")
 

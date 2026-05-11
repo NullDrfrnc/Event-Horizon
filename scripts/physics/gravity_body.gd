@@ -7,15 +7,15 @@ class_name GravityBody
 		initial_velocity = value
 		update_gizmos()
 
-var velocity: Vector3 = Vector3.ZERO
-
-var prev_position: Vector3 = Vector3.ZERO
+@export_category("orbit")
+@export var orbit_target: NodePath
 
 @export_tool_button("Calculate Stable Orbit")
 var _calculate_orbit_button = _set_stable_orbit
 
-@export_category("orbit")
-@export var orbit_target: NodePath
+var velocity: Vector3 = Vector3.ZERO
+
+var prev_position: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	super._ready()
