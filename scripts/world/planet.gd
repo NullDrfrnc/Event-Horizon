@@ -13,18 +13,19 @@ var texture: Texture2D:
 		texture = value
 		_update_mesh()
 
-@onready var mesh: MeshInstance3D = $mesh
+@onready var mesh: MeshInstance3D = $Mesh
 
 func _ready() -> void:
+	super._ready()
 	_update_mesh()
 
 func _update_mesh() -> void:
 	if not is_node_ready():
 		return
 	if not mesh:
-		mesh = $mesh
+		mesh = $Mesh
 	
-	mesh.mesh = mesh.mesh.duplicate()
+	mesh.mesh = mesh.mesh.duplicate() as SphereMesh
 	
 	var mat = StandardMaterial3D.new()
 	mat.albedo_texture = texture

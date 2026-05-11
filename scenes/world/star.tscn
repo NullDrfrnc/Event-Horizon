@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d0vk5vdrrytmm"]
+
+[ext_resource type="Script" uid="uid://b0mrohq14e4j8" path="res://scripts/world/star.gd" id="1_pingb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pingb"]
+shading_mode = 0
+albedo_color = Color(1, 0.84313726, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l40ta"]
+
+[node name="Star" type="Node3D" unique_id=1522863657]
+script = ExtResource("1_pingb")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1563606026]
+material_override = SubResource("StandardMaterial3D_pingb")
+mesh = SubResource("SphereMesh_l40ta")
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=716054996]
+light_color = Color(0.98039216, 0.98039216, 0.8235294, 1)
+light_energy = 5.0
+omni_range = 15000.0
+omni_attenuation = 0.25

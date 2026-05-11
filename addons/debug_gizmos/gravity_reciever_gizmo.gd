@@ -8,11 +8,6 @@ func _init() -> void:
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat.no_depth_test = true
 	add_material("velocity_line", mat)
-	
-	mat.albedo_color = Color.DARK_GOLDENROD
-	add_material("mass_sphere", mat)
-	
-	create_handle_material("handles")
 
 
 func _get_gizmo_name() -> String:
@@ -27,12 +22,6 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	var node = gizmo.get_node_3d() as GravityBody
 	if not node: 
 		return
-	
-	var sphere = SphereMesh.new()
-	sphere.height = max(0.5, (0.5 * (node.object_mass / 1000)))
-	sphere.radius = max(0.25, (0.25 * (node.object_mass / 1000)))
-	
-	gizmo.add_mesh(sphere, get_material("mass_sphere"))
 	
 	var lines = PackedVector3Array([
 		Vector3.ZERO, node.initial_velocity,
