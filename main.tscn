@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dlijek3ou1m28"]
+
+[ext_resource type="PackedScene" uid="uid://tgglw12ca1na" path="res://scenes/world/planet.tscn" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cyggaoalrbv1r" path="res://assets/textures/planets/8k_stars_milky_way.jpg" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bw37s2ml1edke" path="res://assets/textures/planets/earth.jpg" id="2_0xm2m"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1bvp3"]
+panorama = ExtResource("1_h2yge")
+
+[sub_resource type="Sky" id="Sky_lquwl"]
+sky_material = SubResource("PanoramaSkyMaterial_1bvp3")
+
+[sub_resource type="Environment" id="Environment_7mycd"]
+background_mode = 2
+sky = SubResource("Sky_lquwl")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=668546734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18741304, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=961684696]
+environment = SubResource("Environment_7mycd")
+
+[node name="Planet" parent="." unique_id=453146171 instance=ExtResource("1_0xm2m")]
+height = 20.0
+texture = ExtResource("2_0xm2m")
+initial_velocity = Vector3(-20, 103, 0)
+object_mass = 9800.0
+
+[node name="Planet2" parent="." unique_id=845736095 instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.85269, -16.524063)
+height = 1.75
+texture = ExtResource("2_0xm2m")
+initial_velocity = Vector3(0, 6, 6)
+object_mass = 20.0

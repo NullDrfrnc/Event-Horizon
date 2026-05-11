@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://tgglw12ca1na"]
+
+[ext_resource type="Script" uid="uid://cqn36vtwtbxyc" path="res://scripts/world/planet.gd" id="1_447oe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_447oe"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gpobt"]
+
+[node name="Planet" type="Node3D" unique_id=453146171]
+script = ExtResource("1_447oe")
+metadata/_custom_type_script = "uid://cqn36vtwtbxyc"
+
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=195159067]
+material_override = SubResource("StandardMaterial3D_447oe")
+mesh = SubResource("SphereMesh_gpobt")
