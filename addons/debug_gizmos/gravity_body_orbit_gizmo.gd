@@ -23,7 +23,12 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	if not node: 
 		return
 	
-	var points := _predict_orbit(node)
+	var points: PackedVector3Array;
+	
+	if node is Moon:
+		points = _predict_lunar_orbit(node)
+	else:
+		points = _predict_orbit(node)
 	
 	var lines := PackedVector3Array()
 	for i in points.size() - 1:
@@ -32,13 +37,27 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	
 	gizmo.add_lines(lines, get_material("orbit", gizmo))
 
+func _predict_lunar_orbit(node: GravityBody, steps: int = 20000, delta: float = 0.1) -> PackedVector3Array:
+	var points := PackedVector3Array()
+	var position := node.global_position
+	var velocity := node.initial_velocity
+	
+	var source = node.get_parent_node_3d() as GravitySource
+	
+	for i in steps:
+		var acceleration = Vector3.ZERO
+		acceleration = source.calculate_gravity_at(position)
+		
+		velocity += acceleration * delta
+		position += velocity * delta
+		points.append(position)
+	
+	return points;
 
 func _predict_orbit(node: GravityBody, steps: int = 20000, delta: float = 0.1) -> PackedVector3Array:
 	var points := PackedVector3Array()
 	var position := node.global_position
 	var velocity := node.initial_velocity
-	
-	print(node, position)
 	
 	# Get all sources of gravity
 	var sources = node.get_tree().get_nodes_in_group(Groups.gravity_sources)

@@ -24,7 +24,7 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 		return
 	
 	var sphere = SphereMesh.new()
-	sphere.height = max(0.5, (0.5 * (node.object_mass / 1000)))
-	sphere.radius = max(0.25, (0.25 * (node.object_mass / 1000)))
+	sphere.height = max(0.5, (0.5 * (node.object_mass / 10000)))
+	sphere.radius = max(0.25, (0.25 * (node.object_mass / 10000)))
 	
 	gizmo.add_mesh(sphere, get_material("mass_sphere"))
