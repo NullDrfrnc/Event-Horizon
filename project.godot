@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/debug_gizmos/plugin.cfg")
 folder_colors={
 "res://addons/": "purple",
 "res://assets/": "teal",
+"res://evil_shaders/": "red",
 "res://scenes/": "green",
 "res://scripts/": "yellow"
 }

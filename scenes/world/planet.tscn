@@ -1,15 +1,41 @@
 [gd_scene format=3 uid="uid://tgglw12ca1na"]
 
 [ext_resource type="Script" uid="uid://cqn36vtwtbxyc" path="res://scripts/world/planet.gd" id="1_447oe"]
+[ext_resource type="Shader" uid="uid://bbvori6o0gcff" path="res://evil_shaders/world/atmosphere.gdshader" id="2_gpobt"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_447oe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpobt"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_gpobt"]
+[sub_resource type="SphereMesh" id="SphereMesh_6huyh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t4g2"]
+render_priority = 0
+shader = ExtResource("2_gpobt")
+shader_parameter/planet_position = Vector3(0, 0, 0)
+shader_parameter/planet_radius = 0.0
+shader_parameter/atmosphere_radius = 0.0
+shader_parameter/scatter_strength = 1.0
+shader_parameter/scale_height = 0.0
+shader_parameter/light_dir = Vector3(0, 0, 0)
+shader_parameter/scatter_coeffs = Vector3(0.18, 0.42, 1)
+shader_parameter/mie_coeffs = Vector3(1, 0.8, 0.6)
+shader_parameter/mie_anisotropy = 0.76
+shader_parameter/depth_color_shift = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bwypr"]
+radius = 1.0
+height = 2.0
+radial_segments = 16
+rings = 8
 
 [node name="Planet" type="Node3D" unique_id=453146171]
 script = ExtResource("1_447oe")
+planet_radial_segments = null
 metadata/_custom_type_script = "uid://cqn36vtwtbxyc"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=195159067]
-material_override = SubResource("StandardMaterial3D_447oe")
-mesh = SubResource("SphereMesh_gpobt")
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=195159067]
+material_override = SubResource("StandardMaterial3D_gpobt")
+mesh = SubResource("SphereMesh_6huyh")
+
+[node name="Atmosphere" type="MeshInstance3D" parent="." unique_id=1707831621]
+material_override = SubResource("ShaderMaterial_5t4g2")
+mesh = SubResource("SphereMesh_bwypr")

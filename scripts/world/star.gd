@@ -41,6 +41,7 @@ class_name Star
 
 func _ready() -> void:
 	super._ready()
+	add_to_group("stars")
 	_update()
 
 func _update() -> void:
